@@ -1,5 +1,2 @@
-const myNoteFunc = require('./note.js')
-
-const text = myNoteFunc()
-
-console.log(text)
+const chalk = require('chalk')
+console.log(chalk.green('Hello world!'));
