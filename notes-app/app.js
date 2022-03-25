@@ -17,7 +17,7 @@ yargs.command({
       type : 'string'
     }
   },
-  handler  : function(argv) {
+  handler(argv){
     notesUtilities.addNote(argv.title, argv.body)
   }
 })
@@ -32,7 +32,7 @@ yargs.command({
       type : 'string'
     }
   },
-  handler  : function(argv) {
+  handler(argv){
     notesUtilities.removeNote(argv.title)
   }
 })
@@ -40,7 +40,7 @@ yargs.command({
 yargs.command({
   command  : 'list',
   describe : 'list elements in note',
-  handler  : function(){
+  handler(){
     console.log('listing elements..')
   }
 })
@@ -48,7 +48,7 @@ yargs.command({
 yargs.command({
   command  : 'read',
   describe : 'read elmement in note',
-  handler  : function(){
+  handler(){
     console.log('reading elements..')
   }
 })
