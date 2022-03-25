@@ -7,9 +7,13 @@ const getNotes = () => 'Your notes...'
 const addNote = (title, body) => {
   const data = loadNote()
   //cette fonction va nous permettre de copier les objets ayant un title deja similaire
-  const duplicateData = data.filter((note) => note.title === title)
+  //on n'utilise plus cette fonction car elle n'est pas optimisé, elle ne va pas s'arreter quand elle trouve une correspondance
+  //et c'est un problème si il  a beaucoup de note
+  //const duplicateData = data.filter((note) => note.title === title)
 
-  if(duplicateData.length === 0)
+  //a la place on utilise find
+  const duplicateData = data.find((note) => note.title === title)
+  if(!duplicateData)
   {
     data.push({
       title : title,
@@ -37,6 +41,24 @@ const removeNote = (title) => {
   }
 }
 
+//LIST NOTE
+const listNotes = () =>{
+  const dataJSON = loadNote()
+  console.log(chalk.yellow('Yours Notes'))
+  dataJSON.forEach( (note) => console.log('title ->', chalk.yellow(note.title), 'body ->', chalk.yellow(note.body)))
+}
+
+//READNOTE
+const readNote = (title) => {
+    const data = loadNote()
+    const replicateNote = data.find((note) => note.title === title)
+
+    if(replicateNote){
+      console.log('body -> ', chalk.green(replicateNote.body))
+    }else{
+      console.log(chalk.red('No note found'))
+    }
+}
 
 const loadNote = () => {
   try{
@@ -57,5 +79,7 @@ const saveNote = (data) => {
 module.exports = {
   getNotes: getNotes,
   addNote: addNote,
-  removeNote: removeNote
+  removeNote: removeNote,
+  listNotes: listNotes,
+  readNote: readNote
 }
