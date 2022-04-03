@@ -56,11 +56,19 @@ app.get('/weather', (req,res) =>{
 
 //il faut bien penser à mettre cette fonction en toute derniere place pour les requetes de pages
 app.get('/help/*', (req, res) => {
-  res.send('Article Not found')  
+  res.render('404',{
+    title : '404',
+    errorMsg : 'help article not found',
+    name: 'S2z'
+  })
 })
 
 app.get('*', (req,res) => {
-  res.send('My 404 Page ')
+  res.render('404', {
+    title : '404',
+    errorMsg : 'Page not found',
+    name: 'S2z'
+  })
 })
 app.listen(3000, () =>{
   console.log('local server start at 3000 port')
