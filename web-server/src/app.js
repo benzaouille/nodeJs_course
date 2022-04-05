@@ -24,7 +24,7 @@ app.get('', (req,res) => {
   //index va directement être rechercher dans le dossier viex a la racine de projet
   //inutile de rajouter l'extension .hbs pour index
   res.render('index', {
-    title : 'Index Page',
+    title : 'Weather Page',
     name : 'S2z'
   })
 })
