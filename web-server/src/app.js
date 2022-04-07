@@ -5,6 +5,7 @@ const geocode  = require('./utils/geocode')
 const forecast = require('./utils/forecast')
 
 const app = Express()
+const port = process.env.port || 3000
 
 const partialFolder = path.join(__dirname, '../template/partials')
 const dynamicFolder = path.join(__dirname, '../template/views')
@@ -89,6 +90,6 @@ app.get('*', (req,res) => {
     name: 'S2z'
   })
 })
-app.listen(3000, () =>{
-  console.log('local server start at 3000 port')
+app.listen(port, () =>{
+  console.log('local server start at port' + port)
 })
